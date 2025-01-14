@@ -14,7 +14,7 @@ export default function Home() {
       <Nav />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
         <div className="text-center space-y-8 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="text-gradient">Unlock</span> Your Competitors&apos;

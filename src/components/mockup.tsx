@@ -3,11 +3,7 @@ interface MockupProps {
 }
 
 export function Mockup({ type }: MockupProps) {
-  const mockupTitle = {
-    "tech-stack": "Technology Stack Analysis",
-    "sales-stack": "Sales Stack Insights",
-    "market-intel": "Market Intelligence Dashboard"
-  }[type]
+ 
 
   return (
     <div className="mockup-window">
@@ -23,7 +19,7 @@ export function Mockup({ type }: MockupProps) {
             <div className="mockup-button-inner" />
           </div>
         </div>
-        <div className="mockup-title">{mockupTitle}</div>
+       
       </div>
       <div className="mockup-content">
         {type === "tech-stack" && (
