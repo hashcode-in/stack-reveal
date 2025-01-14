@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply text-gray-100;
+    @apply text-gray-100 min-h-screen;
     background: linear-gradient(180deg, rgba(11, 28, 28, 0.98) 0%, rgba(11, 28, 28, 1) 100%);
   }
 
@@ -40,119 +40,252 @@
   }
 
   section {
-    position: relative;
-    overflow: hidden;
+    @apply relative overflow-hidden py-16 md:py-24;
   }
 
   section::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    @apply absolute inset-0 pointer-events-none opacity-50;
     background: radial-gradient(circle at center, rgba(0, 195, 137, 0.015), transparent 80%);
-    pointer-events: none;
-    opacity: 0.5;
   }
 }
 
 @layer components {
+  /* Navigation */
   .glass-nav {
     @apply fixed top-0 left-0 right-0 z-50 bg-black/5 backdrop-blur-xl border-b border-white/10;
   }
 
+  /* Cards and Containers */
   .glass-card {
     @apply bg-[#0B1C1C]/40 backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300;
   }
 
-  .glass-input {
-    @apply h-14 w-full rounded-xl border border-white/10 bg-[#0B1C1C]/40 px-4 py-2 text-base text-white placeholder:text-gray-400 focus:border-[#00C389]/50 focus:outline-none focus:ring-2 focus:ring-[#00C389]/20 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200;
+  /* Features */
+  .feature-card {
+    @apply glass-card p-6 md:p-8 hover:border-[#00C389]/30 hover:shadow-lg hover:shadow-[#00C389]/5 
+           bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40;
   }
 
-  /* Mobile-specific styles */
-  @media (max-width: 640px) {
-    .hero-section {
-      @apply pt-24 pb-16 px-4;
-    }
+  .feature-icon-wrapper {
+    @apply relative w-12 h-12 md:w-16 md:h-16 mb-6 md:mb-8 mx-auto;
+  }
 
-    .hero-title {
-      @apply text-3xl leading-tight;
-    }
+  .feature-icon-bg {
+    @apply absolute inset-0 bg-[#00C389]/10 rounded-2xl rotate-12 transition-transform duration-300;
+    box-shadow: 0 0 32px rgba(0, 195, 137, 0.1);
+  }
 
-    .hero-subtitle {
-      @apply text-base;
-    }
+  .feature-card:hover .feature-icon-bg {
+    @apply rotate-45 scale-110 bg-[#00C389]/20;
+    box-shadow: 0 0 48px rgba(0, 195, 137, 0.15);
+  }
 
-    .input-container {
-      @apply flex-col gap-3;
-    }
+  .feature-icon {
+    @apply absolute inset-0 w-8 h-8 md:w-10 md:h-10 m-auto text-[#00C389] transition-transform duration-300;
+    filter: drop-shadow(0 0 8px rgba(0, 195, 137, 0.3));
+  }
 
-    .glass-input {
-      @apply h-14 text-base;
-    }
+  .feature-card:hover .feature-icon {
+    @apply scale-110;
+    filter: drop-shadow(0 0 12px rgba(0, 195, 137, 0.4));
+  }
 
-    .gradient-button {
-      @apply h-14 w-full text-base;
-    }
+  .feature-card-title {
+    @apply text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white text-center;
+  }
 
-    .feature-grid {
-      @apply grid-cols-1 gap-6;
-    }
+  .feature-card-description {
+    @apply text-sm md:text-base text-gray-200 mb-6 md:mb-8 text-center leading-relaxed;
+  }
 
-    .feature-card {
-      @apply p-6;
-    }
+  /* Stats */
+  .stats-grid {
+    @apply glass-card grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 p-6 md:p-8 
+           bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40;
+  }
 
-    .feature-icon-wrapper {
-      @apply w-12 h-12 mb-6;
-    }
+  .stat-item {
+    @apply border-b border-white/10 pb-4 hover:border-[#00C389]/20 transition-all duration-300;
+  }
 
-    .feature-icon {
-      @apply w-8 h-8;
-    }
+  .stat-value {
+    @apply text-3xl md:text-5xl font-bold text-white transition-colors;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
 
-    .feature-card-title {
-      @apply text-xl;
-    }
+  .stat-item:hover .stat-value {
+    @apply text-[#00C389];
+    text-shadow: 0 0 20px rgba(0, 195, 137, 0.2);
+  }
 
-    .feature-card-description {
-      @apply text-sm;
-    }
+  .stat-label {
+    @apply text-sm md:text-base text-gray-200 mt-2 font-medium tracking-wide;
+  }
 
-    .stats-grid {
-      @apply grid-cols-1 gap-6 p-6;
-    }
+  /* Testimonials */
+  .testimonials-container {
+    @apply relative w-full max-w-7xl mx-auto px-4 py-8;
+  }
 
-    .stat-value {
-      @apply text-4xl;
-    }
+  .testimonials-wrapper {
+    @apply relative flex items-center;
+  }
 
-    .stat-label {
-      @apply text-sm;
-    }
+  .testimonials-track {
+    @apply flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none
+           touch-pan-x cursor-grab active:cursor-grabbing w-full;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
 
-    .testimonial-card {
-      @apply p-6;
-    }
+  .testimonial-card {
+    @apply glass-card p-6 md:p-8 hover:border-[#00C389]/20 
+           bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40
+           snap-center flex-shrink-0 w-[300px] md:w-[400px];
+  }
 
-    .testimonial-quote {
-      @apply text-lg;
-    }
+  .testimonial-content {
+    @apply relative z-10 flex flex-col gap-4 md:gap-6;
+  }
 
-    .cta-card {
-      @apply p-8;
-    }
+  .testimonial-quote {
+    @apply text-lg md:text-xl font-medium italic text-gray-200 min-h-[100px];
+  }
 
-    .cta-title {
-      @apply text-2xl;
-    }
+  .testimonial-author {
+    @apply flex items-center gap-3 md:gap-4;
+  }
 
-    .cta-buttons {
-      @apply flex-col gap-3;
-    }
+  .testimonial-avatar {
+    @apply w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#00C389]/20 
+           flex items-center justify-center text-[#00C389] font-semibold;
+  }
 
-    .gradient-button, .outline-button {
-      @apply w-full;
-    }
+  .testimonial-info {
+    @apply flex flex-col;
+  }
+
+  .testimonial-name {
+    @apply font-semibold text-white text-sm md:text-base;
+  }
+
+  .testimonial-role {
+    @apply text-xs md:text-sm text-gray-300;
+  }
+
+  .testimonial-company {
+    @apply text-xs md:text-sm text-[#00C389] font-medium;
+  }
+
+  .testimonial-nav-button {
+    @apply hidden md:flex items-center justify-center w-12 h-12 rounded-full
+           bg-[#0B1C1C]/80 border border-white/10 text-white absolute z-10
+           hover:bg-[#00C389]/20 hover:border-[#00C389]/30
+           transition-all duration-200 backdrop-blur-sm
+           focus:outline-none focus:ring-2 focus:ring-[#00C389]/20;
+  }
+
+  .testimonial-nav-button.left {
+    @apply -left-6;
+  }
+
+  .testimonial-nav-button.right {
+    @apply -right-6;
+  }
+
+  /* Pricing Section */
+  .pricing-section {
+    @apply py-24 relative;
+  }
+
+  .pricing-section::before {
+    content: '';
+    @apply absolute inset-0 opacity-30 bg-gradient-radial from-[#00C389]/5 to-transparent;
+    z-index: -1;
+  }
+
+  .pricing-card {
+    @apply glass-card relative transition-all duration-300 hover:scale-[1.02]
+           bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40
+           hover:shadow-xl hover:shadow-[#00C389]/5;
+  }
+
+  .pricing-card.popular {
+    @apply border-[#00C389]/30 shadow-xl shadow-[#00C389]/10;
+    transform: scale(1.05);
+  }
+
+  .pricing-card.popular:hover {
+    transform: scale(1.07);
+    @apply shadow-2xl shadow-[#00C389]/20;
+  }
+
+  .pricing-card-content {
+    @apply p-8 relative z-10;
+  }
+
+  .popular-badge {
+    @apply absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00C389] text-white 
+           px-6 py-1.5 rounded-full text-sm font-semibold;
+    box-shadow: 0 4px 20px rgba(0, 195, 137, 0.3);
+  }
+
+  .pricing-amount {
+    @apply flex items-baseline text-white;
+  }
+
+  .pricing-card:hover .pricing-amount {
+    @apply text-[#00C389];
+    text-shadow: 0 0 20px rgba(0, 195, 137, 0.2);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    @apply relative z-10 -mt-32 md:-mt-64 mb-16 md:mb-32 px-4;
+  }
+
+  .cta-card {
+    @apply glass-card p-8 md:p-12 bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40 max-w-5xl mx-auto shadow-xl;
+  }
+
+  .cta-title {
+    @apply text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-white text-center;
+  }
+
+  .cta-title-highlight {
+    @apply text-[#00C389] whitespace-nowrap;
+  }
+
+  /* Buttons */
+  .gradient-button {
+    @apply bg-[#00C389] text-white font-semibold px-8 py-4 rounded-full h-14
+           hover:shadow-lg hover:shadow-[#00C389]/20 hover:scale-105 transition-all duration-300
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#00C389]/50
+           w-full sm:w-auto text-base sm:text-lg;
+  }
+
+  .outline-button {
+    @apply border-2 border-[#00C389] text-[#00C389] font-semibold px-8 py-4 rounded-full h-14
+           hover:bg-[#00C389] hover:text-white hover:scale-105 transition-all duration-300
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#00C389]/50
+           w-full sm:w-auto text-base sm:text-lg;
   }
 }
 
-/* Rest of the CSS remains unchanged */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00C389] to-[#00B37D];
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

@@ -9,14 +9,16 @@ interface FeatureCardProps {
 
 export function FeatureCard({ icon: Icon, title, description, children }: FeatureCardProps) {
   return (
-    <div className="feature-card">
+    <div className="feature-card group">
       <div className="feature-card-content">
         <div className="feature-icon-wrapper">
-          <div className="feature-icon-bg"></div>
-          <Icon className="feature-icon" />
+          <div className="feature-icon-bg group-hover:rotate-45 group-hover:scale-110" />
+          <Icon className="feature-icon group-hover:scale-110" />
         </div>
-        <h3 className="feature-card-title">{title}</h3>
-        <p className="feature-card-description text-gray-200 leading-relaxed">
+        <h3 className="feature-card-title">
+          {title}
+        </h3>
+        <p className="feature-card-description">
           {description}
         </p>
       </div>

@@ -1,10 +1,14 @@
-import React from 'react'
-
-export interface MockupProps {
-  type: 'tech-stack' | 'sales-stack' | 'market-intel';
+interface MockupProps {
+  type: "tech-stack" | "sales-stack" | "market-intel"
 }
 
 export function Mockup({ type }: MockupProps) {
+  const mockupTitle = {
+    "tech-stack": "Technology Stack Analysis",
+    "sales-stack": "Sales Stack Insights",
+    "market-intel": "Market Intelligence Dashboard"
+  }[type]
+
   return (
     <div className="mockup-window">
       <div className="mockup-titlebar">
@@ -19,39 +23,49 @@ export function Mockup({ type }: MockupProps) {
             <div className="mockup-button-inner" />
           </div>
         </div>
-        <div className="mockup-title">
-          {type === 'tech-stack' && 'Tech Stack Analysis'}
-          {type === 'sales-stack' && 'Sales Stack Discovery'}
-          {type === 'market-intel' && 'Market Intelligence'}
-        </div>
+        <div className="mockup-title">{mockupTitle}</div>
       </div>
       <div className="mockup-content">
-        {type === 'tech-stack' && (
+        {type === "tech-stack" && (
+          <div className="space-y-3">
+            <div className="h-4 w-3/4 bg-white/5 rounded animate-pulse" />
+            <div className="h-4 w-1/2 bg-white/5 rounded animate-pulse" />
+            <div className="h-4 w-2/3 bg-white/5 rounded animate-pulse" />
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="h-20 bg-[#00C389]/5 rounded-lg border border-[#00C389]/10" />
+              <div className="h-20 bg-white/5 rounded-lg border border-white/10" />
+              <div className="h-20 bg-white/5 rounded-lg border border-white/10" />
+              <div className="h-20 bg-[#00C389]/5 rounded-lg border border-[#00C389]/10" />
+            </div>
+          </div>
+        )}
+        {type === "sales-stack" && (
           <div className="space-y-4">
-            <div className="h-4 w-3/4 bg-[#0B1C1C] rounded" />
-            <div className="h-4 w-1/2 bg-[#0B1C1C] rounded" />
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 rounded-full bg-[#00C389]/10" />
+              <div className="space-y-2 flex-1">
+                <div className="h-3 w-1/3 bg-white/5 rounded animate-pulse" />
+                <div className="h-3 w-1/2 bg-white/5 rounded animate-pulse" />
+              </div>
+            </div>
+            <div className="h-24 bg-white/5 rounded-lg border border-white/10" />
             <div className="grid grid-cols-3 gap-2">
-              <div className="h-8 bg-[#0B1C1C] rounded" />
-              <div className="h-8 bg-[#0B1C1C] rounded" />
-              <div className="h-8 bg-[#0B1C1C] rounded" />
+              <div className="h-12 bg-[#00C389]/5 rounded border border-[#00C389]/10" />
+              <div className="h-12 bg-white/5 rounded border border-white/10" />
+              <div className="h-12 bg-[#00C389]/5 rounded border border-[#00C389]/10" />
             </div>
           </div>
         )}
-        {type === 'sales-stack' && (
+        {type === "market-intel" && (
           <div className="space-y-4">
-            <div className="h-4 w-2/3 bg-[#0B1C1C] rounded" />
-            <div className="h-12 bg-[#0B1C1C] rounded" />
-            <div className="grid grid-cols-2 gap-2">
-              <div className="h-8 bg-[#0B1C1C] rounded" />
-              <div className="h-8 bg-[#0B1C1C] rounded" />
+            <div className="flex gap-4">
+              <div className="flex-1 h-32 bg-gradient-to-b from-[#00C389]/10 to-transparent rounded-lg border border-[#00C389]/10" />
+              <div className="flex-1 h-32 bg-gradient-to-b from-white/5 to-transparent rounded-lg border border-white/10" />
             </div>
-          </div>
-        )}
-        {type === 'market-intel' && (
-          <div className="space-y-4">
-            <div className="h-4 w-full bg-[#0B1C1C] rounded" />
-            <div className="h-24 bg-[#0B1C1C] rounded" />
-            <div className="h-4 w-1/2 bg-[#0B1C1C] rounded" />
+            <div className="grid grid-cols-2 gap-3">
+              <div className="h-16 bg-white/5 rounded border border-white/10" />
+              <div className="h-16 bg-[#00C389]/5 rounded border border-[#00C389]/10" />
+            </div>
           </div>
         )}
       </div>
