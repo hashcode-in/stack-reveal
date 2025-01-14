@@ -17,8 +17,8 @@ export function Nav() {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link href="/" className="text-xl font-bold text-white">
-            <span className="text-[#4FFFA6]">Reveal</span>
               <span className="text-[#FFFFFF]">Stack</span>
+              <span className="text-[#4FFFA6]">Reveal</span>
             </Link>
           </div>
           
