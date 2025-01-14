@@ -10,7 +10,7 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, error, label, ...props }, ref) => {
     return (
-      <div className="relative">
+      <div className="relative w-full">
         {label && (
           <label className="block text-sm font-medium text-gray-200 mb-1">
             {label}
@@ -19,8 +19,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-red-500",
+            "flex h-12 w-full rounded-xl border border-white/10 bg-[#0B1C1C]/40 px-4 py-2 text-base text-white placeholder:text-gray-400 focus:border-[#00C389]/50 focus:outline-none focus:ring-2 focus:ring-[#00C389]/20 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200",
+            error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
             className
           )}
           ref={ref}
