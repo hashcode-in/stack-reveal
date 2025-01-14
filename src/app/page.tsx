@@ -15,18 +15,16 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
-        <div className="text-center space-y-8 max-w-3xl mx-auto">
+        <div className="text-center space-y-8 max-w-3xl mx-auto md:py-[16vh]">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="text-gradient">Unlock</span> Your Competitors&apos;
             <br />
             Digital DNA
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-            Turn technology insights into your competitive advantage.
-            Discover the exact tools powering industry leaders and stay ahead
-            of market trends with real-time intelligence.
+          Get the exact tech and sales stack of your competitors and leads and stay ahead with real-time market intelligence.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto">
             <div className="flex-1">
               <Input 
                 className="hero-input w-full"
@@ -36,6 +34,17 @@ export default function Home() {
             <Button className="gradient-button min-w-[200px] h-12">
               Reveal Stack
             </Button>
+          </div>
+        </div>
+        <div className="hero-gradient">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px]">
+            <div className="hero-gradient-primary absolute inset-0 bg-gradient-radial from-[#00C389]/20 via-[#00C389]/5 to-transparent" />
+          </div>
+          <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px]">
+            <div className="hero-gradient-secondary absolute inset-0 bg-gradient-radial from-[#00C389]/10 via-[#00C389]/5 to-transparent" />
+          </div>
+          <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px]">
+            <div className="hero-gradient-tertiary absolute inset-0 bg-gradient-radial from-[#00C389]/15 via-[#00C389]/5 to-transparent" />
           </div>
         </div>
       </section>

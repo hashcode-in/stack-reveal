@@ -45,6 +45,34 @@
 }
 
 @layer components {
+  /* Hero Section Gradients */
+  .hero-gradient {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .hero-gradient-primary {
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .hero-gradient-secondary {
+    animation: pulse 8s ease-in-out infinite 1s;
+  }
+
+  .hero-gradient-tertiary {
+    animation: pulse 8s ease-in-out infinite 2s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(1) translate(0);
+    }
+    50% { 
+      opacity: 0.4;
+      transform: scale(1.1) translate(-2%, -2%);
+    }
+  }
+
   /* Navigation */
   .glass-nav {
     @apply fixed top-0 left-0 right-0 z-50 bg-black/5 backdrop-blur-xl border-b border-white/10;
