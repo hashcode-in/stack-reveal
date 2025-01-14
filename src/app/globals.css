@@ -42,18 +42,32 @@
   section {
     @apply relative overflow-hidden py-16 md:py-24;
   }
-
-  section::before {
-    content: '';
-    @apply absolute inset-0 pointer-events-none opacity-50;
-    background: radial-gradient(circle at center, rgba(0, 195, 137, 0.015), transparent 80%);
-  }
 }
 
 @layer components {
   /* Navigation */
   .glass-nav {
     @apply fixed top-0 left-0 right-0 z-50 bg-black/5 backdrop-blur-xl border-b border-white/10;
+  }
+
+  /* Input and Button */
+  .hero-input {
+    @apply h-14 bg-white text-gray-900 placeholder:text-gray-500 rounded-xl px-6
+           border-0 focus:ring-2 focus:ring-[#00C389]/20 focus:outline-none
+           shadow-lg shadow-black/5;
+  }
+
+  .gradient-button {
+    @apply h-14 bg-[#00C389] text-white font-semibold px-8 rounded-xl
+           hover:bg-[#00C389]/90 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-[#00C389]/20
+           shadow-lg shadow-[#00C389]/10;
+  }
+
+  .outline-button {
+    @apply h-14 border-2 border-[#00C389] text-[#00C389] font-semibold px-8 rounded-xl
+           hover:bg-[#00C389] hover:text-white transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-[#00C389]/20;
   }
 
   /* Cards and Containers */
@@ -199,12 +213,6 @@
     @apply py-24 relative;
   }
 
-  .pricing-section::before {
-    content: '';
-    @apply absolute inset-0 opacity-30 bg-gradient-radial from-[#00C389]/5 to-transparent;
-    z-index: -1;
-  }
-
   .pricing-card {
     @apply glass-card relative transition-all duration-300 hover:scale-[1.02]
            bg-gradient-to-br from-[#0B1C1C]/60 to-[#0B1C1C]/40
@@ -255,21 +263,6 @@
 
   .cta-title-highlight {
     @apply text-[#00C389] whitespace-nowrap;
-  }
-
-  /* Buttons */
-  .gradient-button {
-    @apply bg-[#00C389] text-white font-semibold px-8 py-4 rounded-full h-14
-           hover:shadow-lg hover:shadow-[#00C389]/20 hover:scale-105 transition-all duration-300
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#00C389]/50
-           w-full sm:w-auto text-base sm:text-lg;
-  }
-
-  .outline-button {
-    @apply border-2 border-[#00C389] text-[#00C389] font-semibold px-8 py-4 rounded-full h-14
-           hover:bg-[#00C389] hover:text-white hover:scale-105 transition-all duration-300
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#00C389]/50
-           w-full sm:w-auto text-base sm:text-lg;
   }
 }
 

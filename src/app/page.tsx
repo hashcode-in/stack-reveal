@@ -10,7 +10,7 @@ import { Nav } from "../components/nav"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-b from-[#0B1C1C] to-[#0B1C1C]/95">
       <Nav />
       
       {/* Hero Section */}
@@ -27,11 +27,13 @@ export default function Home() {
             of market trends with real-time intelligence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-            <Input 
-              className="hero-input"
-              placeholder="Reveal any company's tech stack (e.g., salesforce.com)"
-            />
-            <Button className="gradient-button">
+            <div className="flex-1">
+              <Input 
+                className="hero-input w-full"
+                placeholder="Reveal any company's tech stack (e.g., salesforce.com)"
+              />
+            </div>
+            <Button className="gradient-button min-w-[200px] h-12">
               Reveal Stack
             </Button>
           </div>
@@ -39,14 +41,15 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-4 md:px-6 lg:px-8 theme-charcoal">
-        <div className="max-w-7xl mx-auto">
+      <section id="features" className="relative py-24 px-4 md:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#00C389]/5 to-transparent opacity-30" />
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              COMPETITIVE EDGE
-            </h2>
-            <p className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              Your Secret Weapon for Market Domination
+            <h3 className="text-[#00C389] text-lg font-semibold mb-4">COMPETITIVE EDGE</h3>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Secret Weapon for Market Domination</h2>
+            <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
+              Gain unparalleled insights into your competitors&apos; technology choices
+              and stay ahead in the digital arms race.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -76,8 +79,9 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 px-4 md:px-6 lg:px-8 theme-green">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-24 px-4 md:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
+        <div className="max-w-7xl mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h2 className="text-2xl md:text-3xl font-bold text-[#00C389]">
@@ -121,31 +125,22 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 px-4 md:px-6 lg:px-8 theme-charcoal">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-24 px-4 md:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
+        <div className="max-w-7xl mx-auto relative">
           <Testimonials />
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-24 px-4 md:px-6 lg:px-8 theme-green">
-        <div className="max-w-7xl mx-auto">
+      <section id="pricing" className="relative py-24 px-4 md:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
+        <div className="max-w-7xl mx-auto relative">
           <Pricing />
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-card">
-          <h2 className="cta-title text-center">
-            Ready to <span className="cta-title-highlight">Outmaneuver</span> Your Competition?
-          </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button className="gradient-button">Get Started Free</Button>
-            <Button className="outline-button">Schedule Demo</Button>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
     </main>

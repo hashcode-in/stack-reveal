@@ -1,7 +1,20 @@
+import { Button } from "../components/ui/button"
 export function Footer() {
   return (
     <footer className="bg-[#071414] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* CTA Section */}
+      <section className="cta-section">
+        <div className="cta-card">
+          <h2 className="cta-title text-center">
+            Ready to <span className="cta-title-highlight">Outmaneuver</span> Your Competition?
+          </h2>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button className="gradient-button">Get Started Free</Button>
+            <Button className="outline-button">Schedule Demo</Button>
+          </div>
+        </div>
+      </section>
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
