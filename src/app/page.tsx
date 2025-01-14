@@ -1,3 +1,5 @@
+'use client'
+
 import { Code, Users, LineChart } from "lucide-react"
 import { Input } from "../components/ui/input"
 import { Button } from "../components/ui/button"
@@ -7,17 +9,47 @@ import { Testimonials } from "../components/testimonials"
 import { Pricing } from "../components/pricing"
 import { Footer } from "../components/footer"
 import { Nav } from "../components/nav"
+import { motion, useScroll, useTransform } from "framer-motion"
 
-export default function Home() {
+interface SectionWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+}
+
+const SectionWrapper = ({ children, className = "", id }: SectionWrapperProps) => (
+  <motion.section
+    id={id}
+    className={className}
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+  >
+    {children}
+  </motion.section>
+)
+
+function ClientHome() {
+  const { scrollYProgress } = useScroll()
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 400])
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 600])
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#0B1C1C] to-[#0B1C1C]/95">
+    <motion.main 
+      className="min-h-screen bg-gradient-to-b from-[#0B1C1C] to-[#0B1C1C]/95"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <Nav />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
+      <SectionWrapper className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
         <div className="text-center space-y-8 max-w-3xl mx-auto md:py-[16vh]">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="text-gradient">Unlock</span> Your Competitors&apos;
+            <span className="text-gradient">Unlock</span> Your Competitors'
             <br />
             Digital DNA
           </h1>
@@ -37,27 +69,36 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-gradient">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px]">
+          <motion.div 
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px]"
+            style={{ y: y1 }}
+          >
             <div className="hero-gradient-primary absolute inset-0 bg-gradient-radial from-[#00C389]/20 via-[#00C389]/5 to-transparent" />
-          </div>
-          <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px]">
+          </motion.div>
+          <motion.div 
+            className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px]"
+            style={{ y: y2 }}
+          >
             <div className="hero-gradient-secondary absolute inset-0 bg-gradient-radial from-[#00C389]/10 via-[#00C389]/5 to-transparent" />
-          </div>
-          <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px]">
+          </motion.div>
+          <motion.div 
+            className="absolute top-1/4 -right-1/4 w-[600px] h-[600px]"
+            style={{ y: y3 }}
+          >
             <div className="hero-gradient-tertiary absolute inset-0 bg-gradient-radial from-[#00C389]/15 via-[#00C389]/5 to-transparent" />
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Features Section */}
-      <section id="features" className="relative py-24 px-4 md:px-6 lg:px-8">
+      <SectionWrapper id="features" className="relative py-24 px-4 md:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00C389]/5 to-transparent opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-16">
             <h3 className="text-[#00C389] text-lg font-semibold mb-4">COMPETITIVE EDGE</h3>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Secret Weapon for Market Domination</h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
-              Gain unparalleled insights into your competitors&apos; technology choices
+              Gain unparalleled insights into your competitors' technology choices
               and stay ahead in the digital arms race.
             </p>
           </div>
@@ -85,10 +126,10 @@ export default function Home() {
             </FeatureCard>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Stats Section */}
-      <section className="relative py-24 px-4 md:px-6 lg:px-8">
+      <SectionWrapper className="relative py-24 px-4 md:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -131,27 +172,29 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Testimonials Section */}
-      <section className="relative py-24 px-4 md:px-6 lg:px-8">
+      <SectionWrapper className="relative py-24 px-4 md:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <Testimonials />
         </div>
-      </section>
+      </SectionWrapper>
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative py-24 px-4 md:px-6 lg:px-8">
+      <SectionWrapper id="pricing" className="relative py-24 px-4 md:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00C389]/5 to-transparent opacity-30" />
         <div className="max-w-7xl mx-auto relative">
           <Pricing />
         </div>
-      </section>
-
-      
+      </SectionWrapper>
 
       <Footer />
-    </main>
+    </motion.main>
   )
+}
+
+export default function Home() {
+  return <ClientHome />
 }
