@@ -9,7 +9,8 @@ import { Testimonials } from "../components/testimonials"
 import { Pricing } from "../components/pricing"
 import { Footer } from "../components/footer"
 import { Nav } from "../components/nav"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
+import { useEffect, useState } from "react"
 
 interface SectionWrapperProps {
   children: React.ReactNode;
@@ -35,6 +36,46 @@ function ClientHome() {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 200])
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 400])
   const y3 = useTransform(scrollYProgress, [0, 1], [0, 600])
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const words = ['tech', 'sales', 'marketing']
+
+  useEffect(() => {
+    let timeout1: NodeJS.Timeout
+    let timeout2: NodeJS.Timeout
+    const currentWord = words[currentWordIndex]
+    
+    if (isDeleting) {
+      // Backspace effect
+      timeout1 = setTimeout(() => {
+        setDisplayText(currentWord.substring(0, displayText.length - 1))
+      }, 50)
+      
+      if (displayText.length === 0) {
+        timeout2 = setTimeout(() => {
+          setIsDeleting(false)
+          setCurrentWordIndex((prev) => (prev + 1) % words.length)
+        }, 500) // Add slight delay before typing next word
+      }
+    } else {
+      // Typing effect
+      timeout1 = setTimeout(() => {
+        setDisplayText(currentWord.substring(0, displayText.length + 1))
+      }, 50)
+      
+      if (displayText === currentWord) {
+        timeout2 = setTimeout(() => {
+          setIsDeleting(true)
+        }, 3000) // Pause before backspacing
+      }
+    }
+
+    return () => {
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+    }
+  }, [displayText, isDeleting, currentWordIndex, words])
 
   return (
     <motion.main 
@@ -54,7 +95,27 @@ function ClientHome() {
             Digital DNA
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-          Get the exact tech and sales stack of your competitors and leads and stay ahead with real-time market intelligence.
+            Get the exact{' '}
+            <span className="relative inline-block">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWordIndex}
+                  className="text-gradient relative font-bold"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {displayText}
+                  <motion.span
+                    className="ml-1 inline-block w-[2px] h-6 bg-current"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ repeat: Infinity, duration: 1 }}
+                  />
+                </motion.span>
+              </AnimatePresence>
+            </span>{' '}
+            stack of your competitors and leads and stay ahead with real-time market intelligence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto">
             <div className="flex-1">
