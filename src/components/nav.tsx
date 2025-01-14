@@ -41,12 +41,13 @@ export function Nav() {
             >
               About
             </Link>
-            <Button className="gradient-button mr-4">
+            <div><Button className="gradient-button mr-4">
               Get Started
             </Button>
             <Button className="outline-button">
               Sign In
-            </Button>
+            </Button> </div>
+            
           </div>
 
           {/* Mobile menu button */}
