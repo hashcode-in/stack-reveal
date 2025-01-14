@@ -13,19 +13,19 @@ export default function Home() {
       <Nav />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="hero-section relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center space-y-8 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="text-gradient">Unlock</span> Your Competitors&apos;
+          <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <span className="text-gradient">Unlock</span> Your Competitors'
             <br />
             Digital DNA
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="hero-subtitle text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
             Turn technology insights into your competitive advantage.
             Discover the exact tools powering industry leaders and stay ahead
             of market trends with real-time intelligence.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+          <div className="input-container flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
             <Input 
               className="glass-input flex-1 text-base"
               placeholder="Reveal any company's tech stack (e.g., salesforce.com)"
@@ -48,7 +48,7 @@ export default function Home() {
               Your Secret Weapon for Market Domination
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="feature-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
               icon={Code}
               title="X-Ray Vision for Tech Stacks"
@@ -132,7 +132,7 @@ export default function Home() {
           <h2 className="cta-title text-center">
             Ready to <span className="cta-title-highlight">Outmaneuver</span> Your Competition?
           </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="cta-buttons flex flex-col sm:flex-row justify-center gap-4">
             <Button className="gradient-button">Get Started Free</Button>
             <Button className="outline-button">Schedule Demo</Button>
           </div>
