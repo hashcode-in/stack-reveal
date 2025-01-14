@@ -90,7 +90,7 @@ function ClientHome() {
       <SectionWrapper className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
         <div className="text-center space-y-8 max-w-3xl mx-auto md:py-[16vh]">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="text-gradient">Unlock</span> Your Competitors`&apos;`
+            <span className="text-gradient">Unlock</span> Your Competitors&apos;
             <br />
             Digital DNA
           </h1>
@@ -114,7 +114,7 @@ function ClientHome() {
                   />
                 </motion.span>
               </AnimatePresence>
-            </span>{' '}
+            </span>
             stack of your competitors and leads and stay ahead with real-time market intelligence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto">
@@ -159,7 +159,7 @@ function ClientHome() {
             <h3 className="text-[#00C389] text-lg font-semibold mb-4">COMPETITIVE EDGE</h3>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Secret Weapon for Market Domination</h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
-              Gain unparalleled insights into your competitors`&apos;` technology choices
+              Gain unparalleled insights into your competitors&apos; technology choices
               and stay ahead in the digital arms race.
             </p>
           </div>
