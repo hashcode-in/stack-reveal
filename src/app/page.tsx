@@ -82,52 +82,72 @@ function ClientHome() {
       className="min-h-screen bg-gradient-to-b from-[#0B1C1C] to-[#0B1C1C]/95"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
     >
       <Nav />
       
       {/* Hero Section */}
       <SectionWrapper className="relative pt-32 pb-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto container relative z-10 mt-header py-[5vh] md:py-[16vh]">
         <div className="text-center space-y-8 max-w-3xl mx-auto md:py-[16vh]">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="text-gradient">Unlock</span> Your Competitors&apos;
-            <br />
-            Digital DNA
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-            Get the exact{' '}
-            <span className="relative inline-block">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentWordIndex}
-                  className="text-gradient relative font-bold"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {displayText}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeInOut" }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <span className="text-gradient">Unlock</span> Your Competitors&apos;
+              <br />
+              Digital DNA
+            </h1>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
+          >
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+              Get the exact{' '}
+              <span className="relative inline-block">
+                <AnimatePresence mode="wait">
                   <motion.span
-                    className="ml-1 inline-block w-[2px] h-6 bg-current"
+                    key={currentWordIndex}
+                    className="text-gradient relative font-bold"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ repeat: Infinity, duration: 1 }}
-                  />
-                </motion.span>
-              </AnimatePresence>
-            </span>
-            stack of your competitors and leads and stay ahead with real-time market intelligence.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto">
-            <div className="flex-1">
-              <Input 
-                className="hero-input w-full"
-                placeholder="Reveal any company's tech stack (e.g., salesforce.com)"
-              />
+                    transition={{ duration: 0.2 }}
+                  >
+                    {displayText}
+                    <motion.span
+                      className="ml-1 inline-block w-[2px] h-6 bg-current"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ repeat: Infinity, duration: 1 }}
+                    />
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              stack of your competitors and leads and stay ahead with real-time market intelligence.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeInOut" }}
+          >
+            <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto">
+              <div className="flex-1">
+                <Input 
+                  className="hero-input w-full"
+                  placeholder="Reveal any company's tech stack (e.g., salesforce.com)"
+                />
+              </div>
+              <Button className="gradient-button min-w-[200px] h-12">
+                Reveal Stack
+              </Button>
             </div>
-            <Button className="gradient-button min-w-[200px] h-12">
-              Reveal Stack
-            </Button>
-          </div>
+          </motion.div>
         </div>
         <div className="hero-gradient">
           <motion.div 
@@ -155,15 +175,27 @@ function ClientHome() {
       <SectionWrapper id="features" className="relative py-24 px-4 md:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00C389]/5 to-transparent opacity-30" />
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
             <h3 className="text-[#00C389] text-lg font-semibold mb-4">COMPETITIVE EDGE</h3>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Secret Weapon for Market Domination</h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
               Gain unparalleled insights into your competitors&apos; technology choices
               and stay ahead in the digital arms race.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </motion.div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
             <FeatureCard
               icon={Code}
               title="X-Ray Vision for Tech Stacks"
@@ -185,7 +217,7 @@ function ClientHome() {
             >
               <Mockup type="market-intel" />
             </FeatureCard>
-          </div>
+            </motion.div>
         </div>
       </SectionWrapper>
 
