@@ -206,7 +206,7 @@ function ClientHome() {
             <FeatureCard
               icon={Users}
               title="Revenue Engine Insights"
-              description="Decode your competitors' entire sales and marketing arsenal. From CRM to automation tools, uncover the tools driving their growth."
+              description="Decode your competitors&apos; entire sales and marketing arsenal. From CRM to automation tools, uncover the tools driving their growth."
             >
               <Mockup type="sales-stack" />
             </FeatureCard>
